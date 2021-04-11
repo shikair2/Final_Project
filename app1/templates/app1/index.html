@@ -1,4 +1,44 @@
-<!doctype html>
-<html>
-	<body>Hi!!!</body?
-</html>
+{% extends 'app1/base.html' %}
+
+{% load static %}
+
+{% block title %} - All Pets{% endblock %}
+
+{% block main %}
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+        {% for pet in pets %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="bd-placeholder-img card-img-top"
+                 width="225" height="225" preserveAspectRatio="xMidYMid slice"
+                 focusable="false" role="img" aria-label="{{ pet.name }}"
+                 src="{% get_media_prefix %}{{ pet.profile_image }}"></img>
+            <div class="card-body">
+              <p class="card-text">
+                <div class="pet-name">
+                  <strong>{{ pet.name }}</strong>
+                </div>
+                <div>
+                  <span class="text-muted font-italic">Adopt me if...</span>
+                  <span>
+                    {{ pet.adopt_me_if }}
+                  </span>
+                </div>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a class="btn btn-sm btn-outline-secondary" href="{% url 'app1:details' pet.id %}">View</a>
+                </div>
+                <small class="text-muted"  data-toggle="tooltip" data-placement="top" title="My birthday!">{{ pet.birth_date }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -46,4 +46,36 @@ class Pet(models.Model):
     bio = models.TextField(
         blank=True,
     )
+
+    adopt_me_if = models.TextField(
+        blank=True,
+    )
+    
+    first_thing_people_notice_about_me = models.TextField(
+        blank=True,
+    )
+    
+    friday_night = models.TextField(
+        blank=True,
+    )
+
+    def __str__(self):
+        return self.name
+
+class AdoptRequest(models.Model):
+    pet = models.ForeignKey(
+            'app1.Pet',
+            on_delete=models.CASCADE,
+    )
+
+    create_ts = models.DateTimeField(
+            auto_now_add=True,
+    )
+
+    adopter = models.EmailField(
+            help_text=_('Email of adopter'),
+    )
+
+    def __str__(self):
+        return f'{self.adopter} at {self.create_ts}'
 # Create your models here.
