@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+            integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+            crossorigin=""></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{% url 'sightings:index' %}">Squirrel Tracker</a>
+        <div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart" style="width:100%"></div>
+      </nav>
+    <div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 vh-100 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+        <div class="navbar-brand col-sm-4 col-md-2 mr-0" id="myChart" style="width:100%"></div>
+        <div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart" style="width:100%"></div>
+        <div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart" style="width:100%"></div>
+	<div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart" style="width:100%"></div>
+	<li class="nav-item">
+            <a class="nav-link active" href="{% url 'sightings:index' %}">
+              <span data-feather="home"></span>
+              Home <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'sightings:add' %}">
+              <span data-feather="file-text"></span>
+              New Sightings
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'map:index' %}">
+              <span data-feather="file-text"></span>
+              Map
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'sightings:stats' %}">
+              <span data-feather="file-text"></span>
+              Statistics
+            </a>
+	    </li>
+	    <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              
+            </a>
+            </li>
+	    <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+		<a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+	    <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+
+            </a>
+            </li>
+        </ul>
+      </div>
+    </nav>
+	
+    <div id="map" class="col-md-10 vh-100" style='border: 1px solid black'></div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Leaflet JS -->
+    <script>
+        var map_center = [
+            40.782091,  // Latitude
+            -73.964285  // Longitude
+        ];
+        var zoom_level = 14;
+        var map = L.map('map').setView(map_center, zoom_level);
+        L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            server: 'b',  // can be 'a', 'b', or 'c'
+            // must leave attribution in!
+            attribution: 'Map data &copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'your.mapbox.access.token'
+        }).addTo(map);
+
+        <!-- L.Icon.Default.prototype.options.iconSize = 15; -->
+        <!-- L.Icon.Default.prototype.options.iconAnchor = [0, 0]; -->
+        <!-- L.Icon.Default.prototype.options.shadowSize = 15; -->
+        <!-- L.Icon.Default.prototype.options.shadowAnchor = [0, 0]; -->
+
+        {% for squirrel in squirrels %}
+          var point_lat_lon = [{{ squirrel.Longitude }}, {{ squirrel.Latitude }}];
+          var marker = L.marker(point_lat_lon).addTo(map);
+        {% endfor %}
+    </script>
+  </body>
+</html>
