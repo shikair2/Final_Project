@@ -1,4 +1,3 @@
-  
 <!doctype html>
 <html lang="en">
   <head>
@@ -57,36 +56,38 @@
         <div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart"></div>
         <div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart"></div>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-stretch pt-3 pb-2 mb-3 border-bottom">
-      <head>General Statistics for Squirrel Data</head>
+      <head>Squirrel Data</head>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
                  <tr>
-                     <th></th>
-                     <th>Statistics</th>
+                <th>Detail</th>
+                <th>Unique Squirrel ID</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Shift</th>
+                <th>Date</th>
+                <th>Age</th>
             </tr>
             </thead>
             <tbody>
+            {% for squirrel in squirrels %}
             <tr>
-                <td>Total Squirrel Sightings</td>
-		<td>{{ count }}</td>
+                <td>
+                <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                          <a class="btn btn-sm btn-outline-secondary" href="{% url 'sightings:details' squirrel.Unique_Squirrel_ID %}">View Details</a>
+                    </div>
+                </div>
+                </td>
+                <td>{{ squirrel.Unique_Squirrel_ID }}</td>
+                <td>{{ squirrel.Latitude }}</td>
+                <td>{{ squirrel.Longitude }}</td>
+                <td>{{ squirrel.Shift }}</td>
+                <td>{{ squirrel.Date }}</td>
+                <td>{{ squirrel.Age }}</td>
             </tr>
-            <tr>
-                <td>Average Latitude</td>
-                <td>{{ latitude_avg }}</td>
-            </tr>
-            <tr>
-                <td>Average Longitude</td>
-                <td>{{ longitude_avg }}</td>
-            </tr>
-            <tr>
-                <td>Age Count</td>
-		<td>Adult: {{ adult }} | Juvenile: {{ juvenile }}</td>
-            </tr>
-            <tr>
-                <td>Running Count</td>
-		<td>True: {{ run_true }} | False: {{ run_false }}</td>
-            </tr>
+            {% endfor %}
             </tbody>
         </table>
       </div>

@@ -36,7 +36,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'map:index' %}">
+		  <a class="nav-link" href="{% url 'map:index' %}">
               <span data-feather="file-text"></span>
               Map
             </a>
@@ -51,33 +51,33 @@
     </nav>
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style='border: 1px solid black'>
-	<div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart" style="width:100%"></div>
-	<div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart" style="width:100%"></div>
-	<div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart" style="width:100%"></div>
+	    <div class="navbar-brand col-sm-4 col-md-2 mr-0" id="myChart"></div>
+        <div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart"></div>
+        <div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart"></div>
+        <div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart"></div>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-stretch pt-3 pb-2 mb-3 border-bottom">
-      <head>Squirrel Data</head>
+      <head>{{ squirrel.Unique_Squirrel_ID }}</head>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
-            	<tr>
+                 <tr>
                 <th></th>
                 <th>Detail</th>
+                     <th>Update</th>
                 
             </tr>
             </thead>
             <tbody>
-            <form id="submit" method="post" action="{% url 'sightings:add' %}" class="input-group mb-3">
-            {% csrf_token %}   
+            <form id="submit" method="post" action="{% url 'sightings:details' squirrel.Unique_Squirrel_ID %}" class="input-group mb-3">
+            {% csrf_token %} 
             <tr>
                 <td>Unique Squirrel ID</td>
-                <td><input type="text"
-               name="Unique_Squirrel_ID"
-               class="form-control"
-               aria-label="Unique_Squirrel_ID"/>
-                </td>
+                <td>{{ squirrel.Unique_Squirrel_ID }}</td>
+                <td>{{ squirrel.Unique_Squirrel_ID }}</td>
             </tr>
             <tr>
                 <td>Latitude</td>
+                <td>{{ squirrel.Latitude }}</td>
                 <td><input type="text"
                name="Latitude"
                class="form-control"
@@ -86,6 +86,7 @@
             </tr>
             <tr>
                 <td>Longitude</td>
+                <td>{{ squirrel.Longitude }}</td>
                 <td><input type="text"
                name="Longitude"
                class="form-control"
@@ -94,6 +95,7 @@
             </tr>
             <tr>
                 <td>Shift</td>
+                <td>{{ squirrel.Shift }}</td>
                 <td><input type="text"
                name="Shift"
                class="form-control"
@@ -103,15 +105,16 @@
             </tr>
             <tr>
                 <td>Date</td>
+                <td>{{ squirrel.Date }}</td>
                 <td><input type="text"
                name="Date"
                class="form-control"
-	       placeholder="yyyy-mm-dd"
                aria-label="Date"/>
                 </td>
             </tr>
             <tr>
                 <td>Age</td>
+                <td>{{ squirrel.Age }}</td>
                 <td><input type="text"
                name="Age"
                class="form-control"
@@ -121,157 +124,95 @@
             </tr>
             <tr>
                 <td>Primary Fur Color</td>
-                <td><input type="text"
-               name="Primary_Fur_Color"
-               class="form-control"
-               aria-label="Primary_Fur_Color"/>
-                </td>
+                <td>{{ squirrel.Primary_Fur_Color }}</td>
+                <td>{{ squirrel.Primary_Fur_Color }}</td>
             </tr>
             <tr>
                 <td>Location</td>
-                <td><input type="text"
-               name="Location"
-               class="form-control"
-               aria-label="Location"/>
-                </td>
+                <td>{{ squirrel.Location }}</td>
+                <td>{{ squirrel.Location }}</td>
             </tr>
             <tr>
                 <td>Specific Location</td>
-                <td><input type="text"
-               name="Specific_Location"
-               class="form-control"
-               aria-label="Specific_Location"/>
-                </td>
+                <td>{{ squirrel.Specific_Location }}</td>
+                <td>{{ squirrel.Specific_Location }}</td>
             </tr>
             <tr>
                 <td>Running</td>
-                <td><input type="text"
-               name="Running"
-               class="form-control"
-               placeholder="True/False"
-               aria-label="Running"/>
-                </td>
+                <td>{{ squirrel.Running }}</td>
+                <td>{{ squirrel.Running }}</td>
             </tr>
             <tr>
                 <td>Chasing</td>
-                <td><input type="text"
-               name="Chasing"
-               class="form-control"
-               placeholder="True/False"
-               aria-label="Chasing"/>
-                </td>
+                <td>{{ squirrel.Chasing }}</td>
+                <td>{{ squirrel.Chasing }}</td>
             </tr>
             <tr>
                 <td>Climbing</td>
-                <td><input type="text"
-               name="Climbing"
-               class="form-control"
-               placeholder="True/False"
-               aria-label="Climbing"/>
-                </td>
+                <td>{{ squirrel.Climbing }}</td>
+                <td>{{ squirrel.Climbing }}</td>
             </tr>
             <tr>
                 <td>Eating</td>
-                <td><input type="text"
-               name="Eating"
-               class="form-control"
-               placeholder="True/False"
-               aria-label="Eating"/>
-                </td>
+                <td>{{ squirrel.Eating }}</td>
+                <td>{{ squirrel.Eating }}</td>
             </tr>
             <tr>
                 <td>Foraging</td>
-                <td><input type="text"
-               name="Foraging"
-               class="form-control"
-               placeholder="True/False"
-               aria-label="Foraging"/>
-                </td>
+                <td>{{ squirrel.Foraging }}</td>
+                <td>{{ squirrel.Foraging }}</td>
             </tr>
             <tr>
-                <td>Other_Activities</td>
-                <td><input type="text"
-               name="Other_Activities"
-               class="form-control"
-               aria-label="Other_Activities"/>
-                </td>
+                <td>Other Activities</td>
+                <td>{{ squirrel.Other_Activities }}</td>
+                <td>{{ squirrel.Other_Activities }}</td>
             </tr>
             <tr>
                 <td>Kuks</td>
-                <td><input type="text"
-               name="Kuks"
-               class="form-control"
-               placeholder="True/False"
-               aria-label="Kuks"/>
-                </td>
+                <td>{{ squirrel.Kuks }}</td>
+                <td>{{ squirrel.Kuks }}</td>
             </tr>
             <tr>
                 <td>Quaas</td>
-                <td><input type="text"
-               name="Quaas"
-               class="form-control"
-               placeholder="True/False"
-               aria-label="Quaas"/>
-                </td>
+                <td>{{ squirrel.Quaas }}</td>
+                <td>{{ squirrel.Quaas }}</td>
             </tr>
             <tr>
                 <td>Moans</td>
-                <td><input type="text"
-               name="Moans"
-               class="form-control"
-               placeholder="True/False"
-               aria-label="Moans"/>
-                </td>
+                <td>{{ squirrel.Moans }}</td>
+                <td>{{ squirrel.Moans }}</td>
+                
             </tr>
             <tr>
-                <td>Tail_Flags</td>
-                <td><input type="text"
-               name="Tail_Flags"
-               class="form-control"
-               placeholder="True/False"
-               aria-label="Tail_Flags"/>
-                </td>
+                <td>Tail Flags</td>
+                <td>{{ squirrel.Tail_Flags }}</td>
+                <td>{{ squirrel.Tail_Flags }}</td>
             </tr>
             <tr>
-                <td>Tail_Twitches</td>
-                <td><input type="text"
-               name="Tail_Twitches"
-               class="form-control"
-               placeholder="True/False"
-               aria-label="Tail_Twitches"/>
-                </td>
+                <td>Tail Twitches</td>
+                <td>{{ squirrel.Tail_Twitches }}</td>
+                <td>{{ squirrel.Tail_Twitches }}</td>
             </tr>
             <tr>
                 <td>Approaches</td>
-                <td><input type="text"
-               name="Approaches"
-               class="form-control"
-               placeholder="True/False"
-               aria-label="Approaches"/>
-                </td>
+                <td>{{ squirrel.Approaches }}</td>
+                <td>{{ squirrel.Approaches }}</td>
             </tr>
             <tr>
                 <td>Indifferent</td>
-                <td><input type="text"
-               name="Indifferent"
-               class="form-control"
-               placeholder="True/False"
-               aria-label="Indifferent"/>
-                </td>
+                <td>{{ squirrel.Indifferent }}</td>
+                <td>{{ squirrel.Indifferent }}</td>
             </tr>
             <tr>
-                <td>Runs_From</td>
-                <td><input type="text"
-               name="Runs_From"
-               class="form-control"
-               placeholder="True/False"
-               aria-label="Runs_From"/>
-                </td>
+                <td>Runs From</td>
+                <td>{{ squirrel.Runs_From }}</td>
+                <td>{{ squirrel.Runs_From }}</td>
             </tr>
-            <tr>
-                <td>Finished</td>
+             <tr>
+                <td></td>
+                 <td></td>
                 <td><div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit">Add</button>
+                        <button class="btn btn-outline-secondary" type="submit">Update</button>
                     </div>
                     <div id="errors" class="mb-3"></div>
                 </td>
@@ -280,7 +221,7 @@
             </tbody>
         </table>
       </div>
-        </div>
+      </div>
     </main>
   </div>
 
