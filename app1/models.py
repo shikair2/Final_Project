@@ -78,4 +78,5 @@ class AdoptRequest(models.Model):
 
     def __str__(self):
         return f'{self.adopter} at {self.create_ts}'
+
 # Create your models here.
