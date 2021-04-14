@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
 
+from .forms import RequestForm
 from .models import Pet
 
 def index(request):
@@ -19,5 +21,13 @@ def detail(request, pet_id):
     return render(request, 'app1/detail.html', context)
 
 def adopt_request(request):
-    pass
+    if request.method == 'POST':
+        form = RequestForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({})
+        else:
+            return JsonResponse({'errors': form.errors}, status=400)
+   
+    return JsonResponse({}, status=405)
 # Create your views here.
