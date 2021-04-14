@@ -1,4 +1,3 @@
-
 from django.core.management.base import BaseCommand, CommandError
 from sightings.models import Squirrel
 
@@ -44,4 +43,3 @@ class Command(BaseCommand):
             self.stdout.write(
                     self.style.SUCCESS(msg)
                 )
-END
