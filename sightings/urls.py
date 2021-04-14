@@ -1,10 +1,12 @@
-from django.urls import path, re_path
-  
+from django.urls import path
+
 from . import views
-app_name = 'sightings'
+
 urlpatterns = [
-        path('', views.index, name='index'),
-        re_path(r'^(?P<Unique_Squirrel_ID>[0-9A-Z -]+)/$', views.squirrel_details, name='details'),
-        path('add/', views.add, name='add'),
-        path('stats/', views.stats, name='stats') 
+        path('',views.homepage_view),
+        path('map/',views.map_view),
+        path('sightings/',views.list_sights),
+        path('sightings/stats/',views.stats_view),
+        path('sightings/add/',views.add_sights),
+        path('sightings/<Unique_Squirrel_Id>/',views.update_sights),
         ]
